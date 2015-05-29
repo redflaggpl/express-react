@@ -1,5 +1,6 @@
 # express-react
-Testing and playing 
+## An example for testing and playing 
 
-npm install
-DEBUG=reconsole-webclient npm start
+`npm install`
+
+`DEBUG=reconsole-webclient npm start`
