@@ -27,6 +27,8 @@ gulp.task('clean:css', function () {
     .pipe(clean({force: true}));
 });
 
+gulp.task('clean', ['clean:js', 'clean:css']);
+
 gulp.task('less', function () {
   return gulp.src(paths.stylesDist)
     .pipe(less())
@@ -39,7 +41,7 @@ gulp.task('react', function () {
     .pipe(gulp.dest(paths.scriptsDest));
 });
 
-gulp.task('watch', ['clean:js', 'clean:css', 'less', 'react']);
+gulp.task('watch', ['clean', 'less', 'react']);
 
 gulp.task('default', ['watch'], function () {
   nodemon({
