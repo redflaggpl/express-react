@@ -1,6 +1,14 @@
 # express-react
-## An example for testing and playing 
+## An example for testing and playing
 
 `npm install`
+`bower install`
 
-`DEBUG=reconsole-webclient npm start`
+## Init server
+
+`gulp`
+
+
+## Tasks List
+
+`gulp help`

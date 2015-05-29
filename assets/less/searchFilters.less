@@ -1,0 +1,98 @@
+.control-padding {
+   padding: 10px;
+}
+.base-button {
+  background-color: @button-background;
+  color: @text-inactive-color;
+  text-transform: uppercase;
+  cursor: pointer;
+  .control-padding;
+  .map-icon {
+    font-size: 12px;
+    float: right;
+    margin-right: 14px;
+    transition: 250ms linear all;
+    -moz-transition: 250ms linear all;
+    -webkit-transition: 250ms linear all;
+    -o-transition: 250ms linear all;
+  }
+}
+.active {
+  color: @text-dark-background;
+  .map-icon {
+    -moz-transform: rotate(180deg);
+    -webkit-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+  }
+}
+.little-space {
+  margin-bottom: 2px;
+}
+.option {
+  .control-padding;
+  text-decoration: none;
+  display: block;
+  background-color: @selected-color;
+}
+.options {
+  max-height: 0px;
+  overflow: hidden;
+  transition: 300ms linear all;
+  -moz-transition: 300ms linear all;
+  -webkit-transition: 300ms linear all;
+  -o-transition: 300ms linear all;
+  div {
+    .control-padding;
+    background-color: @button-background;
+    color: @text-inactive-color;
+  }
+  ul {
+    padding: 0;
+    a {
+      .option;
+      background-color: transparent;
+      &:visited {
+        color: @text-dark-background;
+      }
+      &:hover {
+        background-color: @selected-color;
+      }
+    }
+  }
+  p {
+    .control-padding;
+    margin: 0;
+  }
+  input[type='text'] {
+    .control-padding;
+    width: 50%;
+    border: none;
+    display: inline-block;
+    .bg-dark;
+    &:focus {
+      background-color: @selected-color;
+      border: none;
+    }
+    &::-webkit-input-placeholder { /* WebKit browsers */
+      color: @text-dark-background;
+    }
+    &:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+      color: @text-dark-background;
+    }
+    &::-moz-placeholder { /* Mozilla Firefox 19+ */
+      color: @text-dark-background;
+    }
+    &:-ms-input-placeholder { /* Internet Explorer 10+ */
+      color: @text-dark-background;
+    }
+  }
+  .error {
+    background-color: @error-color !important;
+  }
+}
+.optionsVisible {
+  max-height: 1000px;
+  overflow: visible;
+}
+
