@@ -1,16 +1,15 @@
 var React = require('react');
 var Header = require('../templates/header.jsx');
 var AdvanceSearchForm = require('../components/form/advanceSearchForm.jsx');
+var SearchMap = require('../components/map/SearchMap.jsx');
 
 var MapLayout = React.createClass({
   render: function() {
   	return (
-      <div className='container-fluid full-height'>
-
+      <div>
         <Header />
-
-        <div className='row full-height'>
-          <div className='col-md-3 bg-dark full-height'>
+        <div className='row full-height bg-dark'>
+          <div className='col-md-3 full-height'>
             <div className='row no-padding'>
               <div>
                 <h5 className='form-title'>FILTER OPTIONS</h5>
@@ -20,9 +19,9 @@ var MapLayout = React.createClass({
               </div>
             </div>
           </div>
-
-          <div className='col-md-9'>MAP COMPONENT :D</div>
-
+          <div className='col-md-9'>
+            <SearchMap />
+          </div>
         </div>
       </div>
   	);

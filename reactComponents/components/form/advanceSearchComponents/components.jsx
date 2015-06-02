@@ -2,6 +2,7 @@ var React = require('react');
 var baseComponents = require('./base/baseComponents.jsx');
 var BaseButton = baseComponents.BaseButton;
 var Icon = baseComponents.Icon;
+var Input = baseComponents.Input;
 
 var DropDown = React.createClass({
   getInitialState: function() {
@@ -35,7 +36,7 @@ var DropDown = React.createClass({
   },
   iterateItems: function (item) {
     var key = Object.keys(item)[0];
-    return <li className={'list-unstyled'}>
+    return <li className='list-unstyled'>
       <a href={'#' + item[key]} onClick={this.handleClick.bind(this, key)}>{key}</a>
     </li>;
   },
@@ -48,7 +49,7 @@ var DropDown = React.createClass({
           contractElements={this.contractElements}
           content={this.props.content} />
         <div className={'options ' + this.state.activeClass}>
-          <div>{this.props.message}</div>
+          <div className={this.props.message ? '' : 'hide'}>{this.props.message}</div>
           <ul>
             {this.props.items.map(this.iterateItems, this)}
           </ul>
@@ -59,10 +60,7 @@ var DropDown = React.createClass({
 });
 
 var InputNumber = React.createClass({
-  propTypes: {
-    min: React.PropTypes.number,
-    max: React.PropTypes.number,
-  },
+  //mixins: [Formsy.Mixin],
   getInitialState: function() {
     return {
       isActive: false,
@@ -71,33 +69,48 @@ var InputNumber = React.createClass({
   },
   handleClick: function(key, event) {
     event.preventDefault();
-    /*this.refs.Button.setState({
-      isSelected: true,
-      selectedOption: key
+    this.refs.Button.setState({
+      isSelected: true
     });
     this.setState({
       isActive: false,
       activeClass: ''
-    });*/
+    });
   },
   expandElements: function() {
-    /*this.setState({
+    this.setState({
       isActive: true,
       activeClass: 'optionsVisible'
-    });*/
+    });
   },
   contractElements: function() {
-    /*this.setState({
+    this.setState({
       isActive: false,
       activeClass: ''
-    });*/
+    });
   },
   handleChange: function (event){
+    this.setValue(event.currentTarget.value);
+    console.log('value ', this.getValue());
     console.log('event ', event);
     console.log('min ', this.props.min);
     console.log('max ', this.props.max);
     console.log('ref.min ', this.refs.min);
     console.log('ref.max ', this.refs.max);
+  },
+  renderInput: function(params) {
+    return (
+      <input
+        ref={params.ref}
+        type='text'
+        placeholder={params.placeholder}
+        value={this.props.min}
+        onChange={this.handleChange}
+        required />
+    );
+  },
+  getCustomErrorMessage: function() {
+    return '';
   },
   render: function() {
     return (
@@ -107,22 +120,23 @@ var InputNumber = React.createClass({
           expandElements={this.expandElements}
           contractElements={this.contractElements}
           content={this.props.content} />
-          <div className='options optionsVisible'>
-            <input
+          <div className={'options ' + this.state.activeClass}>
+            <Input
               ref='min'
               type='text'
               placeholder='Min'
               value={this.props.min}
               onChange={this.handleChange}
-              required />
-            <input
+              name='min' />
+            <Input
               ref='max'
               type='text'
               placeholder='Max'
-              value={this.props.max}
               onChange={this.handleChange}
-              required />
-            <p>Error Error Error.</p>
+              name='max' />
+            <p className={this.getCustomErrorMessage() ? '' : 'hide'}>
+              Error Message.
+            </p>
           </div>
       </div>
     );

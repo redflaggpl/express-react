@@ -2,11 +2,12 @@ var React = require('react');
 var components = require('./advanceSearchComponents/components.jsx');
 var DropDown = components.DropDown;
 var InputNumber = components.InputNumber;
+var Formsy = require('formsy-react');
 
 var AdvanceSearchForm = React.createClass({
   render: function() {
     return (
-      <form novalidate>
+      <Formsy.Form onSubmit={this.submit} className="custom-validation">
         <DropDown
           content='MAP OVERLAY'
           items={[{'Overlay': 'value 1'}, {'Satelite': 'value 2'}]}
@@ -29,7 +30,7 @@ var AdvanceSearchForm = React.createClass({
         <DropDown
           content='MORE OPTIONS'
           items={[{'Op 1': 'value 1'}, {'Op 2': 'value 2'}, {'Op 3': 'value 2'}]} />
-      </form>
+      </Formsy.Form>
     );
   }
 });

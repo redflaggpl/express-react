@@ -1,4 +1,5 @@
 var React = require('react');
+var Formsy = require('formsy-react');
 
 var Icon = React.createClass({
   render: function() {
@@ -66,7 +67,24 @@ var BaseButton = React.createClass({
   }
 });
 
+var Input = React.createClass({
+  mixins: [Formsy.Mixin],
+  render: function() {
+    return (
+     <input
+        type={this.props.type || 'text'}
+        placeholder={this.props.placeholder}
+        value={this.props.max}
+        onChange={this.handleChange}
+        name={this.props.name}
+        value={this.getValue()}
+        required />
+    );
+  }
+});
+
 module.exports = {
   Icon: Icon,
+  Input: Input,
   BaseButton: BaseButton
 };
